@@ -1,0 +1,93 @@
+apikey = 1q2w3e4r5t
+
+code_area : ambil dari http://197.211.216.94:8081/api/register/{apikey}/country
+result : 
+{
+	success: true,
+	data: [
+		{
+			area_code: "+93",
+			country_name: "Afghanistan "
+		},
+		{
+			area_code: "+358",
+			country_name: "land Islands "
+		},
+		{
+			area_code: "+355",
+			country_name: "Albania "
+		},
+		{
+			area_code: "+213",
+			country_name: "Algeria "
+		}
+	]
+}
+
+level : ambil dari http://197.211.216.94:8081/api/register/{apikey}/level
+result : 
+{
+	success: true,
+	data: [
+		{
+			level_id: "3",
+			level_name: "Work"
+		},
+		{
+			level_id: "2",
+			level_name: "Hire"
+		}
+	]
+}
+
+1. Register 
+url : http://197.211.216.94:8081/api/register/{apikey}
+method : POST
+parameter : full_name, email, phone, address, code_area, level, password
+
+untuk form code_area dan level, dibikin select option aja dik.
+ngikut yang diform register http://197.211.216.94:8081/register
+
+saat register ada beberapa filter
+klo email udah pernah diregister 
+resultnya : 
+{
+	success: false,
+	message: "The email address has already been taken"
+}
+
+klo nomor telepon udah pernah diregister 
+resultnya : 
+{
+	success: false,
+	message: "The phone number has already been taken"
+}
+
+
+terus kalo daftarnya sebagai "worker" 
+resultnya kayak gini 
+{
+	success: true,
+	data: [
+		{
+			full_name : "aaaa",
+			email : "aa@email.com",	
+			phone : "08191911",
+			address : "jalan",
+			level : "2",
+			password : "98rwehf"
+		}
+	],
+	type : 2;
+
+}
+nah kalo worker itu ada register yang kedua.
+
+nanti form-nya untuk 
+
+charge_per_kilometer
+vehicles_size
+payment_method
+latitude
+longitude
+

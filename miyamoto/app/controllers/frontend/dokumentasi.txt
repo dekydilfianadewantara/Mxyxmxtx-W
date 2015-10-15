@@ -1,0 +1,64 @@
+apikey = 1q2w3e4r5t
+
+1. Register 
+url untuk post : http://197.211.216.94:8081/api/register/{apikey}
+method : POST
+parameter : full_name, email, phone, address, code_area, level, password
+
+saat register ada filternya
+
+klo email udah pernah diregister 
+{
+	success: false,
+	message: "The email address has already been taken"
+}
+
+klo nomor telepon udah pernah diregister 
+resultnya : 
+{
+	success: false,
+	message: "The phone number has already been taken"
+}
+
+
+halaman register ngikutin yang diweb aja.
+trus untuk country code dan level nya dari sini 
+
+code_area : http://197.211.216.94:8081/api/register/{apikey}/country
+level : http://197.211.216.94:8081/api/register/{apikey}/level
+
+kalo daftar sebagai level worker nanti ada registrasi yang kedua
+
+form nya ikut yang di web aja.
+parameternya : full_name, email, phone, address, code_area, level, password, charge_per_kilometer, vehicles_size, payment_method, latitude, longitude
+
+untuk 
+vehicles_size datanya ambil dari : http://197.211.216.94:8081/api/register/{apikey}/size 
+payment_method : http://197.211.216.94:8081/api/register/{apikey}/payment
+
+nanti register yang kedua post nya ke http://197.211.216.94:8081/api/register/{apikey}/second 
+method : POST
+
+tapi kalo daftarnya sebagai hire, nanti result nya
+langsung success, dll, ntar bisa cek sendiri.
+
+2. Login
+
+url : http://197.211.216.94:8081/api/register/{apikey}/login
+method : POST
+parameter : username, password
+
+ada filternya juga 
+klo akunnya belum diaktifkan
+
+{
+	success: false,
+	message: "your account is not active"
+}
+ 
+klo akunnya salah 
+
+{
+	success: false,
+	message: "your account is not valid"
+}

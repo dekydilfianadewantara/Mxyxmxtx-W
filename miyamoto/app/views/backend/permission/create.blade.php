@@ -1,0 +1,50 @@
+@extends('backend.layouts.content')
+
+@section('body-content')
+<div class="box">
+    {{Form::open(array('url'=>'admin/permission/store', 'method'=>'POST'))}}
+        <div class="box-body">
+            <div class="form-group">
+                <label for="parent">Parent</label>
+                <select class="form-control parent_selected" id="parent" name="parent">
+                    <option value="">-Select Parent-</option>
+                    @foreach($parent as $row)
+                        @if($row->id == Input::old('parent'))
+                            <option value="{{Input::old('parent')}}" selected>{{$row->name}}</option>
+                        @else
+                            <option value="{{$row->id}}">{{$row->name}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group submenu">
+                <label for="name"><a class="btn btn-primary btn-xs">Sub Menu <i class="fa fa-fw fa-sitemap"></i></a></label>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" value="{{Input::old('name')}}" class="form-control" id="name" placeholder="Menu Name">
+                {{$errors->first('name','<p class="text-red">:message</p>')}}
+            </div>
+            <div class="form-group">
+                <label for="path">Path</label>
+                <input type="text" name="path" value="{{Input::old('path')}}" class="form-control" id="path" placeholder="Menu Path">
+                {{$errors->first('path','<p class="text-red">:message</p>')}}
+            </div>
+            <div class="form-group">
+                <label for="icon">Icon Class</label>
+                <input type="text" name="icon" value="{{Input::old('icon')}}" class="form-control icon" id="icon" placeholder="Menu Icon">
+                {{$errors->first('icon','<p class="text-red">:message</p>')}}
+            </div>
+            <div class="form-group">
+                <label for="body">Description</label>
+                <textarea id="body" name="description" class="form-control" style="height:100px" placeholder="Menu Description">{{Input::old('description')}}</textarea>
+                {{$errors->first('description','<p class="text-red">:message</p>')}}
+            </div>
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+            <a href="{{URL::to('admin/permission')}}" class="btn btn-default">{{trans('button.bc')}}</a>
+            <button type="submit" class="btn btn-primary waiting">Submit</button>
+        </div>
+    {{Form::close()}}
+</div>
+@stop
